@@ -1,0 +1,20 @@
+const Spinner = ({ fullScreen = false }) => {
+  if (fullScreen) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-slate-950 z-50">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 rounded-full border-4 border-slate-700 border-t-violet-500 animate-spin" />
+          <p className="text-slate-400 text-sm tracking-widest uppercase">Loading…</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center justify-center py-10">
+      <div className="w-8 h-8 rounded-full border-4 border-slate-700 border-t-violet-500 animate-spin" />
+    </div>
+  );
+};
+
+export default Spinner;
