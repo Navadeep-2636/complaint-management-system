@@ -31,8 +31,8 @@ const AllComplaintsPage = () => {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white">All Complaints 📁</h1>
-        <p className="text-slate-400 mt-1 text-sm">{complaints.length} complaints from all users.</p>
+        <h1 className="text-2xl font-bold text-gray-900">All Complaints 📁</h1>
+        <p className="text-gray-500 mt-1 text-sm">{complaints.length} complaints from all users.</p>
       </div>
 
       {/* Controls */}
@@ -43,7 +43,7 @@ const AllComplaintsPage = () => {
           placeholder="Search by title, user name or email…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 px-4 py-2.5 bg-slate-900/60 border border-slate-800/60 rounded-xl text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition"
+          className="flex-1 px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
         <div className="flex gap-2 flex-wrap">
           {['all', 'pending', 'in-progress', 'resolved'].map((f) => (
@@ -53,8 +53,8 @@ const AllComplaintsPage = () => {
               onClick={() => setFilter(f)}
               className={`px-4 py-2 rounded-xl text-xs font-semibold capitalize transition ${
                 filter === f
-                  ? 'bg-violet-500/20 text-violet-300 ring-1 ring-violet-500/40'
-                  : 'bg-slate-800/60 text-slate-400 hover:text-slate-300'
+                  ? 'bg-blue-50 text-blue-700 ring-1 ring-blue-600/20'
+                  : 'bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-50 border border-gray-200'
               }`}
             >
               {f.replace('-', ' ')}
@@ -66,38 +66,38 @@ const AllComplaintsPage = () => {
       {loading ? (
         <Spinner />
       ) : error ? (
-        <p className="text-red-400 text-sm">{error}</p>
+        <p className="text-red-500 text-sm">{error}</p>
       ) : filtered.length === 0 ? (
-        <div className="bg-slate-900/40 border border-dashed border-slate-700/60 rounded-2xl p-12 text-center">
+        <div className="bg-white border border-dashed border-gray-300 shadow-sm rounded-2xl p-12 text-center">
           <p className="text-4xl mb-3">🔍</p>
-          <p className="text-slate-400 text-sm">No complaints match your search.</p>
+          <p className="text-gray-500 text-sm">No complaints match your search.</p>
         </div>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-800/60">
-                <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-widest">Title</th>
-                <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-widest">User</th>
-                <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-widest">Status</th>
-                <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-widest">Date</th>
+              <tr className="border-b border-gray-200 bg-gray-50/50">
+                <th className="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-widest">Title</th>
+                <th className="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-widest">User</th>
+                <th className="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-widest">Status</th>
+                <th className="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-widest">Date</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/40">
+            <tbody className="divide-y divide-gray-200">
               {filtered.map((c) => (
-                <tr key={c._id} id={`row-${c._id}`} className="hover:bg-slate-800/30 transition">
+                <tr key={c._id} id={`row-${c._id}`} className="hover:bg-gray-50 transition">
                   <td className="py-3.5 px-4">
-                    <p className="font-medium text-slate-200 truncate max-w-xs">{c.title}</p>
-                    <p className="text-xs text-slate-500 mt-0.5 truncate max-w-xs">{c.description}</p>
+                    <p className="font-medium text-gray-900 truncate max-w-xs">{c.title}</p>
+                    <p className="text-xs text-gray-500 mt-0.5 truncate max-w-xs">{c.description}</p>
                   </td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-300">{c.user?.name}</p>
-                    <p className="text-xs text-slate-500">{c.user?.email}</p>
+                    <p className="text-gray-700">{c.user?.name}</p>
+                    <p className="text-xs text-gray-500">{c.user?.email}</p>
                   </td>
                   <td className="py-3.5 px-4">
                     <StatusBadge status={c.status} />
                   </td>
-                  <td className="py-3.5 px-4 text-slate-500 whitespace-nowrap">
+                  <td className="py-3.5 px-4 text-gray-500 whitespace-nowrap">
                     {new Date(c.createdAt).toLocaleDateString('en-IN', {
                       day: 'numeric',
                       month: 'short',

@@ -39,12 +39,12 @@ const ManageComplaintsPage = () => {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white">Manage Complaints ⚙️</h1>
-        <p className="text-slate-400 mt-1 text-sm">Update the status of all submitted complaints.</p>
+        <h1 className="text-2xl font-bold text-gray-900">Manage Complaints ⚙️</h1>
+        <p className="text-gray-500 mt-1 text-sm">Update the status of all submitted complaints.</p>
       </div>
 
       {error && (
-        <div className="mb-5 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+        <div className="mb-5 p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
           ⚠️ {error}
         </div>
       )}
@@ -52,9 +52,9 @@ const ManageComplaintsPage = () => {
       {loading ? (
         <Spinner />
       ) : complaints.length === 0 ? (
-        <div className="bg-slate-900/40 border border-dashed border-slate-700/60 rounded-2xl p-12 text-center">
+        <div className="bg-white border border-dashed border-gray-300 shadow-sm rounded-2xl p-12 text-center">
           <p className="text-4xl mb-3">📭</p>
-          <p className="text-slate-400 text-sm">No complaints to manage.</p>
+          <p className="text-gray-500 text-sm">No complaints to manage.</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -62,38 +62,38 @@ const ManageComplaintsPage = () => {
             <div
               key={c._id}
               id={`manage-${c._id}`}
-              className={`bg-slate-900/60 border rounded-2xl p-5 transition-all ${
+              className={`bg-white border shadow-sm rounded-2xl p-5 transition-all ${
                 successId === c._id
-                  ? 'border-emerald-500/40 bg-emerald-500/5'
-                  : 'border-slate-800/60 hover:border-slate-700/80'
+                  ? 'border-green-300 bg-green-50'
+                  : 'border-gray-200 hover:border-gray-300'
               }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                 {/* Complaint Info */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 flex-wrap">
-                    <p className="font-semibold text-slate-200 text-sm">{c.title}</p>
+                    <p className="font-semibold text-gray-900 text-sm">{c.title}</p>
                     <StatusBadge status={c.status} />
                     {successId === c._id && (
-                      <span className="text-xs text-emerald-400 font-medium">✅ Updated!</span>
+                      <span className="text-xs text-green-600 font-medium">✅ Updated!</span>
                     )}
                   </div>
-                  <p className="text-slate-400 text-xs mt-1 leading-relaxed line-clamp-2">{c.description}</p>
+                  <p className="text-gray-500 text-xs mt-1 leading-relaxed line-clamp-2">{c.description}</p>
                   <div className="flex items-center gap-3 mt-2">
                     <div className="flex items-center gap-1.5">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-xs font-bold text-white">
+                      <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white">
                         {c.user?.name?.[0]?.toUpperCase() || 'U'}
                       </div>
-                      <span className="text-xs text-slate-400">{c.user?.name}</span>
+                      <span className="text-xs text-gray-500">{c.user?.name}</span>
                     </div>
-                    <span className="text-xs text-slate-600">·</span>
-                    <span className="text-xs text-slate-500">{c.user?.email}</span>
+                    <span className="text-xs text-gray-300">·</span>
+                    <span className="text-xs text-gray-500">{c.user?.email}</span>
                   </div>
                 </div>
 
                 {/* Status Selector */}
                 <div className="shrink-0">
-                  <label className="block text-xs text-slate-500 mb-1.5 font-medium">Update Status</label>
+                  <label className="block text-xs text-gray-500 mb-1.5 font-medium">Update Status</label>
                   <div className="flex gap-2 flex-wrap">
                     {STATUS_CYCLE.map((s) => (
                       <button
@@ -103,8 +103,8 @@ const ManageComplaintsPage = () => {
                         onClick={() => handleStatusChange(c._id, s)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all ${
                           c.status === s
-                            ? 'bg-violet-500/20 text-violet-300 ring-1 ring-violet-500/40 cursor-default'
-                            : 'bg-slate-800/80 text-slate-400 hover:bg-slate-700/80 hover:text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed'
+                            ? 'bg-blue-50 text-blue-700 ring-1 ring-blue-600/20 cursor-default'
+                            : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed'
                         }`}
                       >
                         {updatingId === c._id && c.status !== s ? (
