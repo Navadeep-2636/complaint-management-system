@@ -30,17 +30,17 @@ const CreateComplaintPage = () => {
     <DashboardLayout>
       <div className="max-w-2xl">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white">Submit a Complaint</h1>
-          <p className="text-slate-400 mt-1 text-sm">
+          <h1 className="text-2xl font-bold text-gray-900">Submit a Complaint</h1>
+          <p className="text-gray-500 mt-1 text-sm">
             Describe your issue clearly so our team can assist you promptly.
           </p>
         </div>
 
-        <div className="bg-slate-900/60 border border-slate-800/60 rounded-2xl p-6 shadow-xl">
+        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
           {error && (
             <div
               id="create-error"
-              className="mb-5 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-start gap-2"
+              className="mb-5 p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm flex items-start gap-2"
             >
               <span className="mt-0.5">⚠️</span>
               {error}
@@ -49,7 +49,7 @@ const CreateComplaintPage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-slate-300 mb-1.5">
+              <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1.5">
                 Title
               </label>
               <input
@@ -60,12 +60,12 @@ const CreateComplaintPage = () => {
                 onChange={handleChange}
                 required
                 placeholder="Brief summary of the issue"
-                className="w-full px-4 py-2.5 bg-slate-800/60 border border-slate-700/60 rounded-xl text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition"
+                className="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
               />
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-slate-300 mb-1.5">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1.5">
                 Description
               </label>
               <textarea
@@ -76,7 +76,7 @@ const CreateComplaintPage = () => {
                 required
                 rows={6}
                 placeholder="Please provide detailed information about your complaint…"
-                className="w-full px-4 py-2.5 bg-slate-800/60 border border-slate-700/60 rounded-xl text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition resize-none"
+                className="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none"
               />
             </div>
 
@@ -85,7 +85,7 @@ const CreateComplaintPage = () => {
                 id="submit-complaint-btn"
                 type="submit"
                 disabled={loading}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold text-sm shadow-lg transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-2"
+                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-sm transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-2"
               >
                 {loading ? (
                   <>
@@ -99,7 +99,7 @@ const CreateComplaintPage = () => {
               <button
                 type="button"
                 onClick={() => navigate('/dashboard')}
-                className="px-6 py-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/60 text-slate-300 font-medium text-sm transition"
+                className="px-6 py-2.5 rounded-xl bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium text-sm transition"
               >
                 Cancel
               </button>
